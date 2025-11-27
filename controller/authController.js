@@ -1,7 +1,7 @@
 const User = require("../model/userSchema");
 
 const loginHandler = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body; //
     if (!email || !password) {
         return res.json({
             success: false,
@@ -13,6 +13,14 @@ const loginHandler = async (req, res) => {
         return res.json({
             success: false,
             message: "user does not exist"
+        })
+    }
+
+    let isMatch = user.comparePassword(password);
+    if (!isMatch) {
+        return res.json({
+            success: false,
+            message: "invalid credentials"
         })
     }
 }
