@@ -1,7 +1,20 @@
 const User = require("../model/userSchema");
 
-const loginHandler = (req, res) => {
-
+const loginHandler = async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return res.json({
+            success: false,
+            message: "missing fields"
+        })
+    }
+    let user = await User.findOne({ email });
+    if (!user) {
+        return res.json({
+            success: false,
+            message: "user does not exist"
+        })
+    }
 }
 const registerHandler = async (req, res) => {
     try {
