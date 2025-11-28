@@ -17,7 +17,7 @@ const loginHandler = async (req, res) => {
         })
     }
 
-    let isMatch = await user.comparePassword(password);
+    let isMatch = await user.comparePasswords(password);
     if (!isMatch) {
         return res.json({
             success: false,
