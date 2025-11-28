@@ -1,3 +1,4 @@
+const { generateToken } = require("../middleware/auth");
 const User = require("../model/userSchema");
 
 const loginHandler = async (req, res) => {
