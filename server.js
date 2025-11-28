@@ -3,9 +3,7 @@ const mongoose = require('mongoose')
 const connectDB = require('./config/database')
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require('./routes/authRoutes');
-require('dotenv').config({
-    quiet: true
-});
+require('dotenv').config();
 const app = express();
 
 app.use(express.json())
