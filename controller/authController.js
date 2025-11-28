@@ -23,6 +23,24 @@ const loginHandler = async (req, res) => {
             message: "invalid credentials"
         })
     }
+
+
+    // jwt generate
+    let payload = { _id: user._id, role: user.role }
+    let token = generateToken(payload);
+
+    res.json({
+        success: true,
+        message: "user logged in successfully",
+        token,
+        data: {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            role: user.role
+        }
+    })
+
 }
 const registerHandler = async (req, res) => {
     try {
